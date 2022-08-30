@@ -3,6 +3,10 @@ let category = document.querySelectorAll(".category");
 let choose = document.querySelectorAll(".choose");
 let difficulty = document.querySelectorAll(".difficulty");
 let sections = document.querySelectorAll("section");
+let params = {
+  category: "",
+  difficulty: "",
+};
 window.addEventListener("click", (event) => {
   chooseQuiz(event.target);
 });
@@ -13,6 +17,11 @@ function chooseQuiz(choosingEl) {
       choosingElementsArray[i].classList.remove("active");
     }
     choosingEl.classList.add("active");
+    if (choosingEl.dataset.name) {
+      params.category = choosingEl.dataset.name;
+    } else {
+      params.difficulty = choosingEl.dataset.difficulty;
+    }
     choosingEl
       .closest("section")
       .querySelector("button")
@@ -27,6 +36,11 @@ sections.forEach((section, num) => {
     }
     section.classList.remove("active-section");
     if (num === 2) {
+      questionsService.getQuestions(
+        params.category,
+        params.difficulty,
+        getResponse
+      );
       return;
     }
     sections[num + 1].classList.add("active-section");
@@ -45,4 +59,12 @@ let service = () => {
   };
 };
 let questionsService = service();
-
+function getResponse(err, data) {
+  if (err) {
+    alert("Произошла ошибка. Страница будет перезагружена автоматически.");
+    document.location.reload(); //перезагрузка страницы
+    return;
+  }
+  renderQuestions(data);
+}
+function renderQuestions(data) {}
