@@ -1,0 +1,79 @@
+*{
+    transition: 0.1s;
+}
+body{
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+    margin: 0;
+    background-image: linear-gradient(to right top, #051937, #001f5c, #002282, #001fa5, #1708c5);
+}
+p, h2, h1{
+    font-family: 'Open Sans', sans-serif;
+}
+section{
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+h2{
+    color: rgb(255, 255, 255);
+    font-size: 45px;
+}
+button{
+    width: 250px;
+    height: 50px;
+    border-radius: 15px;
+    outline: none;
+    font-size: 22px;
+    border: none;
+    background: white;
+    color: #0c2d5f;
+    margin-top: 20px;
+    opacity: 0;
+}
+button:hover{
+    background: rgb(248, 215, 106);
+}
+.categoriesCont{
+    display: grid;
+    grid-template-rows: repeat(3, 80px);
+    grid-template-columns: repeat(3, 220px);
+    justify-items: center;
+    align-items: center;
+}
+.category{
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+.category:hover{
+    color: rgb(250, 217, 109);
+}
+.difficultiesCont{
+    width: 300px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.difficulty{
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+.difficulty:hover{
+    color: rgb(250, 217, 109);
+}
+.active{
+    color: rgb(250, 217, 109) !important;
+}
+.active-section{
+    display: flex;
+}
+.active-button{
+    opacity: 1;
+    cursor: pointer;
+}
