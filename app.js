@@ -1,3 +1,4 @@
+import { myHTTP } from "./api.js";
 let category = document.querySelectorAll(".category");
 let choose = document.querySelectorAll(".choose");
 let difficulty = document.querySelectorAll(".difficulty");
@@ -31,3 +32,17 @@ sections.forEach((section, num) => {
     sections[num + 1].classList.add("active-section");
   });
 });
+let http = myHTTP();
+let service = () => {
+  let triviaUrl = "https://the-trivia-api.com/api/questions";
+  return {
+    getQuestions(category, difficulty, cb) {
+      http.get(
+        `${triviaUrl}?categories=${category}&limit=10&difficulty=${difficulty}`,
+        cb
+      );
+    },
+  };
+};
+let questionsService = service();
+
